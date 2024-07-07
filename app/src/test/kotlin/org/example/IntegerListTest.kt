@@ -36,7 +36,19 @@ class IntegerListTest {
     @Test
     fun `head should points to the first element of the list`() {
         val integerList = IntegerList()
-        val expectedNode = IntegerNode(value = 4, next = null)
+        val expectedNode = IntegerNode(value = 4, next = IntegerNode(value = 5, next = IntegerNode(value = 6, null)))
+
+        integerList.add(4)
+        integerList.add(5)
+        integerList.add(6)
+
+        assertThat(integerList.getHead()).usingRecursiveComparison().isEqualTo(expectedNode)
+    }
+
+    @Test
+    fun `should link the node to the prev node`() {
+        val integerList = IntegerList()
+        val expectedNode = IntegerNode(value = 4, next = IntegerNode(value = 5, next = null))
 
         integerList.add(4)
         integerList.add(5)

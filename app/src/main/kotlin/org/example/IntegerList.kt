@@ -6,7 +6,19 @@ class IntegerList {
     fun getHead(): IntegerNode? = head
 
     fun add(i: Int): Int {
-        if (head == null) head = IntegerNode(i, next = null)
+        val integerNode = IntegerNode(i, next = null)
+
+        if (head == null) {
+            head = integerNode
+            return i
+        }
+
+        var current = head
+        while (current?.next != null) {
+            current = current.next
+        }
+        current?.next = integerNode
+
         return i
     }
 }
