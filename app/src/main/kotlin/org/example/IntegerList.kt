@@ -5,7 +5,7 @@ class IntegerList {
 
     fun getHead(): IntegerNode? = head
 
-    fun add(i: Int): Int {
+    fun addLast(i: Int): Int {
         val integerNode = IntegerNode(i, next = null)
 
         if (head == null) {

@@ -18,7 +18,7 @@ class IntegerListTest {
     fun `should able to add the integer in the list`() {
         val integerList = IntegerList()
 
-        val addedInteger = integerList.add(4)
+        val addedInteger = integerList.addLast(4)
 
         assertEquals(4, addedInteger)
     }
@@ -28,7 +28,7 @@ class IntegerListTest {
         val integerList = IntegerList()
         val expectedNode = IntegerNode(value = 4, next = null)
 
-        integerList.add(4)
+        integerList.addLast(4)
 
         assertThat(integerList.getHead()).usingRecursiveComparison().isEqualTo(expectedNode)
     }
@@ -38,9 +38,9 @@ class IntegerListTest {
         val integerList = IntegerList()
         val expectedNode = IntegerNode(value = 4, next = IntegerNode(value = 5, next = IntegerNode(value = 6, null)))
 
-        integerList.add(4)
-        integerList.add(5)
-        integerList.add(6)
+        integerList.addLast(4)
+        integerList.addLast(5)
+        integerList.addLast(6)
 
         assertThat(integerList.getHead()).usingRecursiveComparison().isEqualTo(expectedNode)
     }
@@ -50,8 +50,8 @@ class IntegerListTest {
         val integerList = IntegerList()
         val expectedNode = IntegerNode(value = 4, next = IntegerNode(value = 5, next = null))
 
-        integerList.add(4)
-        integerList.add(5)
+        integerList.addLast(4)
+        integerList.addLast(5)
 
         assertThat(integerList.getHead()).usingRecursiveComparison().isEqualTo(expectedNode)
     }
