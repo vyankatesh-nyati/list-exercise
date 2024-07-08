@@ -17,4 +17,18 @@ class ListOperationsTest {
 
         assertThat(squareValues).usingRecursiveComparison().isEqualTo(expectedSquareValues)
     }
+
+    @Test
+    fun `should return the integer list with cube values for given integer list`() {
+        val integerList = IntegerList()
+        integerList.addLast(4)
+        integerList.addLast(5)
+        val expectedCubeValues = IntegerList()
+        expectedCubeValues.addLast(64)
+        expectedCubeValues.addLast(125)
+
+        val cubeValues = ListOperations.getCubeValues(integerList)
+
+        assertThat(cubeValues).usingRecursiveComparison().isEqualTo(expectedCubeValues)
+    }
 }
