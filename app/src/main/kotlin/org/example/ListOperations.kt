@@ -13,16 +13,16 @@ class ListOperations {
         }
 
         private fun getListWithPoweredValues(integerList: IntegerList, power: Double): IntegerList {
-            val cubeValues = IntegerList()
+            val poweredValues = IntegerList()
 
             var current = integerList.getHead()
 
             while (current != null) {
-                cubeValues.addLast(current.value.toDouble().pow(power).toInt())
+                poweredValues.addLast(current.value.toDouble().pow(power).toInt())
                 current = current.next
             }
 
-            return cubeValues
+            return poweredValues
         }
     }
 }
