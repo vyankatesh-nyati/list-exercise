@@ -24,5 +24,19 @@ class ListOperations {
 
             return poweredValues
         }
+
+        fun getOddValues(integerList: IntegerList): IntegerList {
+            val oddValues = IntegerList()
+
+            var currentNode = integerList.getHead()
+
+            while (currentNode != null) {
+                val value = currentNode.value
+                if (value % 2 != 0) oddValues.addLast(value)
+                currentNode = currentNode.next
+            }
+
+            return oddValues
+        }
     }
 }
