@@ -5,47 +5,54 @@ import kotlin.math.pow
 class ListOperations {
     companion object {
         fun getSquareValues(integerList: IntegerList): IntegerList {
-            return getListWithPoweredValues(integerList, 2.0)
+            return conditionalIterationAndPerformOperation(
+                integerList = integerList,
+                condition = { true },
+                operation = { value -> value.toDouble().pow(2.0).toInt() }
+            )
         }
 
         fun getCubeValues(integerList: IntegerList): IntegerList {
-            return getListWithPoweredValues(integerList, 3.0)
+            return conditionalIterationAndPerformOperation(
+                integerList = integerList,
+                condition = { true },
+                operation = { value -> value.toDouble().pow(3.0).toInt() }
+            )
         }
 
 
         fun getOddValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationOnList(integerList) { value -> value % 2 != 0 }
+            return conditionalIterationAndPerformOperation(
+                integerList = integerList,
+                condition = { value -> value % 2 != 0 },
+                operation = { value -> value }
+            )
         }
 
         fun getEvenValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationOnList(integerList) { value -> value % 2 == 0 }
+            return conditionalIterationAndPerformOperation(
+                integerList = integerList,
+                condition = { value -> value % 2 == 0 },
+                operation = { value -> value }
+            )
         }
 
-        private fun getListWithPoweredValues(integerList: IntegerList, power: Double): IntegerList {
-            val poweredValues = IntegerList()
-
-            var current = integerList.getHead()
-
-            while (current != null) {
-                poweredValues.addLast(current.value.toDouble().pow(power).toInt())
-                current = current.next
-            }
-
-            return poweredValues
-        }
-
-        private fun conditionalIterationOnList(integerList: IntegerList, condition: (Int) -> Boolean): IntegerList {
-            val oddValues = IntegerList()
+        private fun conditionalIterationAndPerformOperation(
+            integerList: IntegerList,
+            condition: (Int) -> Boolean,
+            operation: (Int) -> Int
+        ): IntegerList {
+            val list = IntegerList()
 
             var currentNode = integerList.getHead()
 
             while (currentNode != null) {
                 val value = currentNode.value
-                if (condition(value)) oddValues.addLast(value)
+                if (condition(value)) list.addLast(operation(value))
                 currentNode = currentNode.next
             }
 
-            return oddValues
+            return list
         }
     }
 }
