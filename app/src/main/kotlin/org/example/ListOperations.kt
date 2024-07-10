@@ -7,7 +7,6 @@ class ListOperations {
         fun getSquareValues(integerList: IntegerList): IntegerList {
             return conditionalIterationAndPerformOperation(
                 integerList = integerList,
-                condition = { true },
                 operation = { value -> value.toDouble().pow(2.0).toInt() }
             )
         }
@@ -15,7 +14,6 @@ class ListOperations {
         fun getCubeValues(integerList: IntegerList): IntegerList {
             return conditionalIterationAndPerformOperation(
                 integerList = integerList,
-                condition = { true },
                 operation = { value -> value.toDouble().pow(3.0).toInt() }
             )
         }
@@ -39,7 +37,7 @@ class ListOperations {
 
         private fun conditionalIterationAndPerformOperation(
             integerList: IntegerList,
-            condition: (Int) -> Boolean,
+            condition: (Int) -> Boolean = { true },
             operation: (Int) -> Int
         ): IntegerList {
             val list = IntegerList()
