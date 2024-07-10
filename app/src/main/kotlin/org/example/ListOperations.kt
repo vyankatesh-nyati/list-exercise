@@ -23,7 +23,6 @@ class ListOperations {
             return conditionalIterationAndPerformOperation(
                 integerList = integerList,
                 condition = { value -> value % 2 != 0 },
-                operation = { value -> value }
             )
         }
 
@@ -31,14 +30,13 @@ class ListOperations {
             return conditionalIterationAndPerformOperation(
                 integerList = integerList,
                 condition = { value -> value % 2 == 0 },
-                operation = { value -> value }
             )
         }
 
         private fun conditionalIterationAndPerformOperation(
             integerList: IntegerList,
             condition: (Int) -> Boolean = { true },
-            operation: (Int) -> Int
+            operation: (Int) -> Int = { it }
         ): IntegerList {
             val list = IntegerList()
 
