@@ -7,14 +7,14 @@ import kotlin.math.pow
 class ListOperations {
     companion object {
         fun getSquareValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndPerformOperation(
+            return conditionalIterationAndOperationOnElement(
                 integerList = integerList,
                 operation = { value -> value.toDouble().pow(2.0).toInt() }
             )
         }
 
         fun getCubeValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndPerformOperation(
+            return conditionalIterationAndOperationOnElement(
                 integerList = integerList,
                 operation = { value -> value.toDouble().pow(3.0).toInt() }
             )
@@ -22,20 +22,20 @@ class ListOperations {
 
 
         fun getOddValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndPerformOperation(
+            return conditionalIterationAndOperationOnElement(
                 integerList = integerList,
                 condition = { value -> value % 2 != 0 },
             )
         }
 
         fun getEvenValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndPerformOperation(
+            return conditionalIterationAndOperationOnElement(
                 integerList = integerList,
                 condition = { value -> value % 2 == 0 },
             )
         }
 
-        private fun conditionalIterationAndPerformOperation(
+        private fun conditionalIterationAndOperationOnElement(
             integerList: IntegerList,
             condition: (Int) -> Boolean = { true },
             operation: (Int) -> Int = { it }
@@ -54,43 +54,39 @@ class ListOperations {
         }
 
         fun getSumOfElements(integerList: IntegerList): Int {
-            var sum = 0
-            var currentNode = integerList.getHead()
-
-            while (currentNode != null) {
-                sum += currentNode.value
-                currentNode = currentNode.next
-            }
-
-            return sum
+            return iterateAndCalculate(integerList, 0) { sum, nodeValue -> sum + nodeValue }
         }
 
         fun getMaxValue(integerList: IntegerList): Int? {
             if (integerList.getHead() == null) return null
 
-            var max = Int.MIN_VALUE
-            var currentNode = integerList.getHead()
-
-            while (currentNode != null) {
-                max = max(max, currentNode.value)
-                currentNode = currentNode.next
+            return iterateAndCalculate(integerList, Int.MIN_VALUE) { maxValue, nodeValue ->
+                max(maxValue, nodeValue)
             }
-
-            return max
         }
 
         fun getMinValue(integerList: IntegerList): Int? {
             if (integerList.getHead() == null) return null
 
-            var min = Int.MAX_VALUE
+            return iterateAndCalculate(integerList, Int.MAX_VALUE) { minValue, nodeValue ->
+                min(minValue, nodeValue)
+            }
+        }
+
+        private fun iterateAndCalculate(
+            integerList: IntegerList,
+            initialValue: Int,
+            operation: (Int, Int) -> Int
+        ): Int {
+            var cal = initialValue
             var currentNode = integerList.getHead()
 
             while (currentNode != null) {
-                min = min(min, currentNode.value)
+                cal = operation(cal, currentNode.value)
                 currentNode = currentNode.next
             }
 
-            return min
+            return cal
         }
     }
 }
