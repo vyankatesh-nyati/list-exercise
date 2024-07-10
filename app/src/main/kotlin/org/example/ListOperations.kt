@@ -12,6 +12,15 @@ class ListOperations {
             return getListWithPoweredValues(integerList, 3.0)
         }
 
+
+        fun getOddValues(integerList: IntegerList): IntegerList {
+            return conditionalIterationOnList(integerList) { value -> value % 2 != 0 }
+        }
+
+        fun getEvenValues(integerList: IntegerList): IntegerList {
+            return conditionalIterationOnList(integerList) { value -> value % 2 == 0 }
+        }
+
         private fun getListWithPoweredValues(integerList: IntegerList, power: Double): IntegerList {
             val poweredValues = IntegerList()
 
@@ -25,32 +34,18 @@ class ListOperations {
             return poweredValues
         }
 
-        fun getOddValues(integerList: IntegerList): IntegerList {
+        private fun conditionalIterationOnList(integerList: IntegerList, condition: (Int) -> Boolean): IntegerList {
             val oddValues = IntegerList()
 
             var currentNode = integerList.getHead()
 
             while (currentNode != null) {
                 val value = currentNode.value
-                if (value % 2 != 0) oddValues.addLast(value)
+                if (condition(value)) oddValues.addLast(value)
                 currentNode = currentNode.next
             }
 
             return oddValues
-        }
-
-        fun getEvenValues(integerList: IntegerList): IntegerList {
-            val evenValues = IntegerList()
-
-            var currentNode = integerList.getHead()
-
-            while (currentNode != null) {
-                val value = currentNode.value
-                if (value % 2 == 0) evenValues.addLast(value)
-                currentNode = currentNode.next
-            }
-
-            return evenValues
         }
     }
 }
