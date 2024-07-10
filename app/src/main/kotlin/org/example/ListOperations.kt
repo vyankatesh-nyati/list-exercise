@@ -80,5 +80,19 @@ class ListOperations {
 
             return max
         }
+
+        fun getMinValue(integerList: IntegerList): Int? {
+            if (integerList.getHead() == null) return null
+
+            var min = Int.MAX_VALUE
+            var currentNode = integerList.getHead()
+
+            while (currentNode != null) {
+                if (currentNode.value < min) min = currentNode.value
+                currentNode = currentNode.next
+            }
+
+            return min
+        }
     }
 }

@@ -76,4 +76,22 @@ class ListOperationsTest {
 
         assertEquals(null, maxValue)
     }
+
+    @Test
+    fun `should return the minimum value from the given list of elements`() {
+        val integerList = setupIntegerList(listOf(4, 5, 6, 7))
+
+        val maxValue = ListOperations.getMinValue(integerList)
+
+        assertEquals(4, maxValue)
+    }
+
+    @Test
+    fun `should return null for the min value if the list is empty`() {
+        val integerList = setupIntegerList(listOf())
+
+        val maxValue = ListOperations.getMinValue(integerList)
+
+        assertEquals(null, maxValue)
+    }
 }
