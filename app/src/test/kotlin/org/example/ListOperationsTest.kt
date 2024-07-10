@@ -2,6 +2,7 @@ package org.example
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 class ListOperationsTest {
     private fun setupIntegerList(numbers: List<Int>): IntegerList {
@@ -47,5 +48,14 @@ class ListOperationsTest {
         val evenValues = ListOperations.getEvenValues(integerList)
 
         assertThat(evenValues).usingRecursiveComparison().isEqualTo(expectedList)
+    }
+
+    @Test
+    fun `should return the sum of the all elements for the given integer list`() {
+        val integerList = setupIntegerList(listOf(4, 5, 6, 7))
+
+        val sumOfElements = ListOperations.getSumOfElements(integerList)
+
+        assertEquals(22, sumOfElements)
     }
 }

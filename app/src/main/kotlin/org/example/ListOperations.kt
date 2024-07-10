@@ -54,5 +54,17 @@ class ListOperations {
 
             return list
         }
+
+        fun getSumOfElements(integerList: IntegerList): Int {
+            var sum = 0
+            var currentNode = integerList.getHead()
+
+            while (currentNode != null) {
+                sum += currentNode.value
+                currentNode = currentNode.next
+            }
+
+            return sum
+        }
     }
 }
