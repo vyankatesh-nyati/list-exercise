@@ -1,5 +1,7 @@
 package org.example
 
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.pow
 
 class ListOperations {
@@ -70,7 +72,7 @@ class ListOperations {
             var currentNode = integerList.getHead()
 
             while (currentNode != null) {
-                if (currentNode.value > max) max = currentNode.value
+                max = max(max, currentNode.value)
                 currentNode = currentNode.next
             }
 
@@ -84,7 +86,7 @@ class ListOperations {
             var currentNode = integerList.getHead()
 
             while (currentNode != null) {
-                if (currentNode.value < min) min = currentNode.value
+                min = min(min, currentNode.value)
                 currentNode = currentNode.next
             }
 
