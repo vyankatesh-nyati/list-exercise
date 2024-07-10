@@ -58,4 +58,22 @@ class ListOperationsTest {
 
         assertEquals(22, sumOfElements)
     }
+
+    @Test
+    fun `should return the maximum value from the given list of elements`() {
+        val integerList = setupIntegerList(listOf(4, 5, 6, 7))
+
+        val maxValue = ListOperations.getMaxValue(integerList)
+
+        assertEquals(7, maxValue)
+    }
+
+    @Test
+    fun `should return null for the max value if the list is empty`() {
+        val integerList = setupIntegerList(listOf())
+
+        val maxValue = ListOperations.getMaxValue(integerList)
+
+        assertEquals(null, maxValue)
+    }
 }

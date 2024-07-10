@@ -66,5 +66,19 @@ class ListOperations {
 
             return sum
         }
+
+        fun getMaxValue(integerList: IntegerList): Int? {
+            if (integerList.getHead() == null) return null
+
+            var max = Int.MIN_VALUE
+            var currentNode = integerList.getHead()
+
+            while (currentNode != null) {
+                if (currentNode.value > max) max = currentNode.value
+                currentNode = currentNode.next
+            }
+
+            return max
+        }
     }
 }
