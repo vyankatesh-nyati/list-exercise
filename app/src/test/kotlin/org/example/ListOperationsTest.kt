@@ -38,4 +38,14 @@ class ListOperationsTest {
 
         assertThat(oddValues).usingRecursiveComparison().isEqualTo(expectedList)
     }
+
+    @Test
+    fun `should return the integer list with even values for the given integer list`() {
+        val integerList = setupIntegerList(listOf(4, 5, 6, 7))
+        val expectedList = setupIntegerList(listOf(4, 6))
+
+        val evenValues = ListOperations.getEvenValues(integerList)
+
+        assertThat(evenValues).usingRecursiveComparison().isEqualTo(expectedList)
+    }
 }

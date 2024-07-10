@@ -38,5 +38,19 @@ class ListOperations {
 
             return oddValues
         }
+
+        fun getEvenValues(integerList: IntegerList): IntegerList {
+            val evenValues = IntegerList()
+
+            var currentNode = integerList.getHead()
+
+            while (currentNode != null) {
+                val value = currentNode.value
+                if (value % 2 == 0) evenValues.addLast(value)
+                currentNode = currentNode.next
+            }
+
+            return evenValues
+        }
     }
 }
