@@ -10,7 +10,7 @@ class NodeTest {
         val list = EmptyNode<Int>()
         val expectedList = DataNode(value = 4, next = EmptyNode())
 
-        val latestList = list.insert(4)
+        val latestList = list.addLast(4)
 
         assertEquals(expectedList, latestList)
     }
@@ -20,7 +20,7 @@ class NodeTest {
         val list = DataNode(value = 4, next = EmptyNode())
         val expectedList = DataNode(value = 4, next = DataNode(value = 5, next = EmptyNode()))
 
-        val latestList = list.insert(5)
+        val latestList = list.addLast(5)
 
         assertEquals(expectedList, latestList)
     }
