@@ -10,41 +10,18 @@ class NodeTest {
         val list = EmptyNode<Int>()
         val expectedList = DataNode(value = 4, next = EmptyNode())
 
-        val latestList = list.addLast(4)
+        val latestList = list.insert(4)
 
         assertEquals(expectedList, latestList)
     }
 
-//    @Test
-//    fun `head should points to the newly added integer, on adding integer to empty list`() {
-//        val list = CustomList<Int>()
-//        val expectedNode = Node(value = 4, next = null)
-//
-//        list.addLast(4)
-//
-//        assertThat(list.getHead()).usingRecursiveComparison().isEqualTo(expectedNode)
-//    }
-//
-//    @Test
-//    fun `head should points to the first element of the list`() {
-//        val list = CustomList<Int>()
-//        val expectedNode = Node(value = 4, next = Node(value = 5, next = Node(value = 6, null)))
-//
-//        list.addLast(4)
-//        list.addLast(5)
-//        list.addLast(6)
-//
-//        assertThat(list.getHead()).usingRecursiveComparison().isEqualTo(expectedNode)
-//    }
-//
-//    @Test
-//    fun `should link the node to the prev node`() {
-//        val list = CustomList<Int>()
-//        val expectedNode = Node(value = 4, next = Node(value = 5, next = null))
-//
-//        list.addLast(4)
-//        list.addLast(5)
-//
-//        assertThat(list.getHead()).usingRecursiveComparison().isEqualTo(expectedNode)
-//    }
+    @Test
+    fun `should able to add the integer in the Non Empty list`() {
+        val list = DataNode(value = 4, next = EmptyNode())
+        val expectedList = DataNode(value = 4, next = DataNode(value = 5, next = EmptyNode()))
+
+        val latestList = list.insert(5)
+
+        assertEquals(expectedList, latestList)
+    }
 }
