@@ -25,19 +25,19 @@ sealed class Node<T> {
 
     //Flat map
     fun conditionalIterationAndOperationOnElement(
-        integerList: Node<T>,
+        list: Node<T>,
         condition: (T) -> Boolean = { true },
         operation: (T) -> T = { it },
         result: Node<T> = EmptyNode()
-    ): Node<T> = when (integerList) {
+    ): Node<T> = when (list) {
         is DataNode -> {
-            if (condition(integerList.value)) conditionalIterationAndOperationOnElement(
-                integerList.next,
+            if (condition(list.value)) conditionalIterationAndOperationOnElement(
+                list.next,
                 condition,
                 operation,
-                result.addLast(operation(integerList.value))
+                result.addLast(operation(list.value))
             )
-            else conditionalIterationAndOperationOnElement(integerList.next, condition, operation, result)
+            else conditionalIterationAndOperationOnElement(list.next, condition, operation, result)
         }
 
         is EmptyNode -> result

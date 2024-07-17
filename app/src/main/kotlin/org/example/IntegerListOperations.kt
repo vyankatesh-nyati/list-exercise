@@ -6,22 +6,22 @@ import kotlin.math.min
 import kotlin.math.pow
 
 fun Node<Int>.getSquareValues(): Node<Int> = conditionalIterationAndOperationOnElement(
-    integerList = this,
+    list = this,
     operation = { value -> value.toDouble().pow(2.0).toInt() }
 )
 
 fun Node<Int>.getCubeValues(): Node<Int> = conditionalIterationAndOperationOnElement(
-    integerList = this,
+    list = this,
     operation = { value -> value.toDouble().pow(3.0).toInt() }
 )
 
 fun Node<Int>.getOddValues(): Node<Int> = conditionalIterationAndOperationOnElement(
-    integerList = this,
+    list = this,
     condition = { value -> value % 2 != 0 },
 )
 
 fun Node<Int>.getEvenValues(): Node<Int> = this.conditionalIterationAndOperationOnElement(
-    integerList = this,
+    list = this,
     condition = { value -> value % 2 == 0 },
 )
 
