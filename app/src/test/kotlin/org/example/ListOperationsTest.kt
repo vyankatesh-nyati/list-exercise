@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class ListOperationsTest {
-    private fun setupIntegerList(numbers: List<Int>): IntegerList {
-        val integerList = IntegerList()
-        numbers.forEach { integerList.addLast(it) }
-        return integerList
+    private fun setupIntegerList(numbers: kotlin.collections.List<Int>): List<Int> {
+        val list = List<Int>()
+        numbers.forEach { list.addLast(it) }
+        return list
     }
 
     @Test

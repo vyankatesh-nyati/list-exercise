@@ -6,41 +6,33 @@ import kotlin.math.pow
 
 class ListOperations {
     companion object {
-        fun getSquareValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndOperationOnElement(
-                integerList = integerList,
-                operation = { value -> value.toDouble().pow(2.0).toInt() }
-            )
-        }
+        fun getSquareValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+            integerList = list,
+            operation = { value -> value.toDouble().pow(2.0).toInt() }
+        )
 
-        fun getCubeValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndOperationOnElement(
-                integerList = integerList,
-                operation = { value -> value.toDouble().pow(3.0).toInt() }
-            )
-        }
+        fun getCubeValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+            integerList = list,
+            operation = { value -> value.toDouble().pow(3.0).toInt() }
+        )
 
 
-        fun getOddValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndOperationOnElement(
-                integerList = integerList,
-                condition = { value -> value % 2 != 0 },
-            )
-        }
+        fun getOddValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+            integerList = list,
+            condition = { value -> value % 2 != 0 },
+        )
 
-        fun getEvenValues(integerList: IntegerList): IntegerList {
-            return conditionalIterationAndOperationOnElement(
-                integerList = integerList,
-                condition = { value -> value % 2 == 0 },
-            )
-        }
+        fun getEvenValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+            integerList = list,
+            condition = { value -> value % 2 == 0 },
+        )
 
         private fun conditionalIterationAndOperationOnElement(
-            integerList: IntegerList,
+            integerList: List<Int>,
             condition: (Int) -> Boolean = { true },
             operation: (Int) -> Int = { it }
-        ): IntegerList {
-            val list = IntegerList()
+        ): List<Int> {
+            val list = List<Int>()
 
             var currentNode = integerList.getHead()
 
@@ -53,33 +45,33 @@ class ListOperations {
             return list
         }
 
-        fun getSumOfElements(integerList: IntegerList): Int {
-            return iterateAndCalculate(integerList, 0) { sum, nodeValue -> sum + nodeValue }
+        fun getSumOfElements(list: List<Int>): Int {
+            return iterateAndCalculate(list, 0) { sum, nodeValue -> sum + nodeValue }
         }
 
-        fun getMaxValue(integerList: IntegerList): Int? {
-            if (integerList.getHead() == null) return null
+        fun getMaxValue(list: List<Int>): Int? {
+            if (list.getHead() == null) return null
 
-            return iterateAndCalculate(integerList, Int.MIN_VALUE) { maxValue, nodeValue ->
+            return iterateAndCalculate(list, Int.MIN_VALUE) { maxValue, nodeValue ->
                 max(maxValue, nodeValue)
             }
         }
 
-        fun getMinValue(integerList: IntegerList): Int? {
-            if (integerList.getHead() == null) return null
+        fun getMinValue(list: List<Int>): Int? {
+            if (list.getHead() == null) return null
 
-            return iterateAndCalculate(integerList, Int.MAX_VALUE) { minValue, nodeValue ->
+            return iterateAndCalculate(list, Int.MAX_VALUE) { minValue, nodeValue ->
                 min(minValue, nodeValue)
             }
         }
 
         private fun iterateAndCalculate(
-            integerList: IntegerList,
+            list: List<Int>,
             initialValue: Int,
             operation: (Int, Int) -> Int
         ): Int {
             var cal = initialValue
-            var currentNode = integerList.getHead()
+            var currentNode = list.getHead()
 
             while (currentNode != null) {
                 cal = operation(cal, currentNode.value)
