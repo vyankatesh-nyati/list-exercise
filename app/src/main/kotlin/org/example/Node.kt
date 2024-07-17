@@ -24,20 +24,20 @@ sealed class Node<T> {
     }
 
     //Flat map
-    fun conditionalIterationAndOperationOnElement(
+    fun <T, R> conditionalIterationAndOperationOnElement(
         list: Node<T>,
         condition: (T) -> Boolean = { true },
-        operation: (T) -> T = { it },
-        result: Node<T> = EmptyNode()
-    ): Node<T> = when (list) {
+        operation: (T) -> R,
+        result: Node<R> = EmptyNode()
+    ): Node<R> = when (list) {
         is DataNode -> {
-            if (condition(list.value)) conditionalIterationAndOperationOnElement(
+            if (condition(list.value)) conditionalIterationAndOperationOnElement<T, R>(
                 list.next,
                 condition,
                 operation,
                 result.addLast(operation(list.value))
             )
-            else conditionalIterationAndOperationOnElement(list.next, condition, operation, result)
+            else conditionalIterationAndOperationOnElement<T, R>(list.next, condition, operation, result)
         }
 
         is EmptyNode -> result

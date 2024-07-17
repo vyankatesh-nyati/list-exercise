@@ -54,4 +54,14 @@ class StringListOperationsTest {
 
         assertEquals(expectedList, resultList)
     }
+
+    @Test
+    fun `should return the integer list with string length from string list`() {
+        val stringList = DataNode(value = "aBCd", next = DataNode(value = "anv", next = EmptyNode()))
+        val expectedList = DataNode(value = 4, next = DataNode(value = 3, next = EmptyNode()))
+
+        val integerListWithStringLength = stringList.getIntegerListWithStringLength()
+
+        assertEquals(expectedList, integerListWithStringLength)
+    }
 }

@@ -12,5 +12,11 @@ fun Node<String>.convertToLowercase(): Node<String> = this.conditionalIterationA
 
 fun Node<String>.getNumberOfCharacterLong(number: Int) = this.conditionalIterationAndOperationOnElement(
     list = this,
-    condition = { value -> value.length == 3 }
+    condition = { value -> value.length == 3 },
+    operation = { it }
+)
+
+fun Node<String>.getIntegerListWithStringLength() = this.conditionalIterationAndOperationOnElement(
+    list = this,
+    operation = { value -> value.length }
 )

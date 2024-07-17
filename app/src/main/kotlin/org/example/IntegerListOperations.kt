@@ -18,11 +18,13 @@ fun Node<Int>.getCubeValues(): Node<Int> = conditionalIterationAndOperationOnEle
 fun Node<Int>.getOddValues(): Node<Int> = conditionalIterationAndOperationOnElement(
     list = this,
     condition = { value -> value % 2 != 0 },
+    operation = { it }
 )
 
 fun Node<Int>.getEvenValues(): Node<Int> = this.conditionalIterationAndOperationOnElement(
     list = this,
     condition = { value -> value % 2 == 0 },
+    operation = { it }
 )
 
 fun Node<Int>.getSumOfElements(): Int {
