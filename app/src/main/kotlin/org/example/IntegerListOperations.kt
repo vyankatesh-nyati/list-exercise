@@ -25,6 +25,7 @@ fun Node<Int>.getEvenValues(): Node<Int> = conditionalIterationAndOperationOnEle
     condition = { value -> value % 2 == 0 },
 )
 
+//Flat map
 private fun conditionalIterationAndOperationOnElement(
     integerList: Node<Int>,
     condition: (Int) -> Boolean = { true },
@@ -56,6 +57,7 @@ fun DataNode<Int>.getMinValue(): Int = iterateAndCalculate(this, Int.MAX_VALUE) 
     min(minValue, nodeValue)
 }
 
+//Reduce
 private fun iterateAndCalculate(
     list: Node<Int>,
     accumulator: Int,
