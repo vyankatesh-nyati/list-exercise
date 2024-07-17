@@ -12,7 +12,7 @@ fun Node<String>.convertToLowercase(): Node<String> = this.conditionalIterationA
 
 fun Node<String>.getNumberOfCharacterLong(number: Int) = this.conditionalIterationAndOperationOnElement(
     list = this,
-    condition = { value -> value.length == 3 },
+    condition = { value -> value.length == number },
     operation = { it }
 )
 
@@ -20,3 +20,15 @@ fun Node<String>.getIntegerListWithStringLength() = this.conditionalIterationAnd
     list = this,
     operation = { value -> value.length }
 )
+
+fun Node<String>.getSumValueOfStringLength(): Int = this.getIntegerListWithStringLength().getSumOfElements()
+
+fun Node<String>.getStringByConcatenating(seperator: String): String =
+    this.iterateAndCalculate(list = this, accumulator = "") { prevValue, nodeValue ->
+        if (prevValue != "") prevValue + seperator + nodeValue else nodeValue
+    }
+
+fun Node<String>.getStringByConcatenatingFirstCharacter(): String =
+    this.iterateAndCalculate(list = this, accumulator = "") { prev, curr ->
+        prev + curr.first()
+    }

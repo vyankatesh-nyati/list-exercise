@@ -64,4 +64,32 @@ class StringListOperationsTest {
 
         assertEquals(expectedList, integerListWithStringLength)
     }
+
+    @Test
+    fun `should return the sum value of all the string lengths from string list`() {
+        val stringList = DataNode(value = "aBCd", next = DataNode(value = "anv", next = EmptyNode()))
+
+        val sumValueOfStringLength = stringList.getSumValueOfStringLength()
+
+        assertEquals(7, sumValueOfStringLength)
+    }
+
+    @Test
+    fun `should return the single string by concatenating all values with separator`() {
+        val stringList = DataNode(value = "aBCd", next = DataNode(value = "anv", next = EmptyNode()))
+
+        val stringByConcatenating = stringList.getStringByConcatenating(seperator = " ")
+
+        assertEquals("aBCd anv", stringByConcatenating)
+    }
+
+    @Test
+    fun `should return the single string by concatenating the first character from values from string list`() {
+        val stringList =
+            DataNode(value = "abc", next = DataNode(value = "bcd", next = DataNode(value = "cde", next = EmptyNode())))
+
+        val stringByConcatenating = stringList.getStringByConcatenatingFirstCharacter()
+
+        assertEquals("abc", stringByConcatenating)
+    }
 }
