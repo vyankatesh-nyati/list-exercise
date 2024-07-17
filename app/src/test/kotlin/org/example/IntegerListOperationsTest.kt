@@ -1,6 +1,13 @@
 package org.example
 
 import org.assertj.core.api.Assertions.assertThat
+import org.example.IntegerListOperations.Companion.getCubeValues
+import org.example.IntegerListOperations.Companion.getEvenValues
+import org.example.IntegerListOperations.Companion.getMaxValue
+import org.example.IntegerListOperations.Companion.getMinValue
+import org.example.IntegerListOperations.Companion.getOddValues
+import org.example.IntegerListOperations.Companion.getSquareValues
+import org.example.IntegerListOperations.Companion.getSumOfElements
 import org.example.Node.*
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
@@ -17,7 +24,7 @@ class IntegerListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5))
         val expectedSquareValues = setupIntegerList(listOf(16, 25))
 
-        val squareValues = integerList.getSquareValues()
+        val squareValues = getSquareValues(integerList)
 
         assertThat(squareValues).usingRecursiveComparison().isEqualTo(expectedSquareValues)
     }
@@ -27,7 +34,7 @@ class IntegerListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5))
         val expectedCubeValues = setupIntegerList(listOf(64, 125))
 
-        val cubeValues = integerList.getCubeValues()
+        val cubeValues = getCubeValues(integerList)
 
         assertThat(cubeValues).usingRecursiveComparison().isEqualTo(expectedCubeValues)
     }
@@ -37,7 +44,7 @@ class IntegerListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
         val expectedList = setupIntegerList(listOf(5, 7))
 
-        val oddValues = integerList.getOddValues()
+        val oddValues = getOddValues(integerList)
 
         assertThat(oddValues).usingRecursiveComparison().isEqualTo(expectedList)
     }
@@ -47,7 +54,7 @@ class IntegerListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
         val expectedList = setupIntegerList(listOf(4, 6))
 
-        val evenValues = integerList.getEvenValues()
+        val evenValues = getEvenValues(integerList)
 
         assertThat(evenValues).usingRecursiveComparison().isEqualTo(expectedList)
     }
@@ -56,7 +63,7 @@ class IntegerListOperationsTest {
     fun `should return the sum of the all elements for the given integer list`() {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
 
-        val sumOfElements = integerList.getSumOfElements()
+        val sumOfElements = getSumOfElements(integerList)
 
         assertEquals(22, sumOfElements)
     }
@@ -65,7 +72,7 @@ class IntegerListOperationsTest {
     fun `should return the maximum value from the given list of elements`() {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
 
-        val maxValue = (integerList as DataNode).getMaxValue()
+        val maxValue = getMaxValue(integerList as DataNode)
 
         assertEquals(7, maxValue)
     }
@@ -74,7 +81,7 @@ class IntegerListOperationsTest {
     fun `should return the minimum value from the given list of elements`() {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
 
-        val maxValue = (integerList as DataNode).getMinValue()
+        val maxValue = getMinValue(integerList as DataNode)
 
         assertEquals(4, maxValue)
     }

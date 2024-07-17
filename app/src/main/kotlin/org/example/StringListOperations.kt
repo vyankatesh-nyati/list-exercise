@@ -1,5 +1,7 @@
 package org.example
 
+import org.example.IntegerListOperations.Companion.getSumOfElements
+
 class StringListOperations {
     companion object {
         fun convertToUppercase(list: Node<String>): Node<String> = list.conditionalIterationAndOperationOnElement(
@@ -19,7 +21,7 @@ class StringListOperations {
             operation = { value -> value.length }
         )
 
-        fun getSumValueOfStringLength(list: Node<String>): Int = getIntegerListWithStringLength(list).getSumOfElements()
+        fun getSumValueOfStringLength(list: Node<String>): Int = getSumOfElements(getIntegerListWithStringLength(list))
 
         fun getStringByConcatenating(list: Node<String>, seperator: String): String =
             list.iterateAndCalculate(accumulator = "") { prevValue, nodeValue ->

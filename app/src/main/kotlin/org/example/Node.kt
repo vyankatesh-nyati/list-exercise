@@ -1,8 +1,5 @@
 package org.example
 
-import org.example.Node.DataNode
-import org.example.Node.EmptyNode
-
 sealed class Node<T> {
 
     data class EmptyNode<T>(val next: Nothing? = null) : Node<T>()
