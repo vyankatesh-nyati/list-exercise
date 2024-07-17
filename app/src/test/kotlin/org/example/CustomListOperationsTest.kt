@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class CustomListOperationsTest {
-    private fun setupIntegerList(numbers: kotlin.collections.List<Int>): CustomList<Int> {
+    private fun setupIntegerList(numbers: List<Int>): CustomList<Int> {
         val list = CustomList<Int>()
         numbers.forEach { list.addLast(it) }
         return list
@@ -16,7 +16,7 @@ class CustomListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5))
         val expectedSquareValues = setupIntegerList(listOf(16, 25))
 
-        val squareValues = ListOperations.getSquareValues(integerList)
+        val squareValues = integerList.getSquareValues()
 
         assertThat(squareValues).usingRecursiveComparison().isEqualTo(expectedSquareValues)
     }
@@ -26,7 +26,7 @@ class CustomListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5))
         val expectedCubeValues = setupIntegerList(listOf(64, 125))
 
-        val cubeValues = ListOperations.getCubeValues(integerList)
+        val cubeValues = integerList.getCubeValues()
 
         assertThat(cubeValues).usingRecursiveComparison().isEqualTo(expectedCubeValues)
     }
@@ -36,7 +36,7 @@ class CustomListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
         val expectedList = setupIntegerList(listOf(5, 7))
 
-        val oddValues = ListOperations.getOddValues(integerList)
+        val oddValues = integerList.getOddValues()
 
         assertThat(oddValues).usingRecursiveComparison().isEqualTo(expectedList)
     }
@@ -46,7 +46,7 @@ class CustomListOperationsTest {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
         val expectedList = setupIntegerList(listOf(4, 6))
 
-        val evenValues = ListOperations.getEvenValues(integerList)
+        val evenValues = integerList.getEvenValues()
 
         assertThat(evenValues).usingRecursiveComparison().isEqualTo(expectedList)
     }
@@ -55,7 +55,7 @@ class CustomListOperationsTest {
     fun `should return the sum of the all elements for the given integer list`() {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
 
-        val sumOfElements = ListOperations.getSumOfElements(integerList)
+        val sumOfElements = integerList.getSumOfElements()
 
         assertEquals(22, sumOfElements)
     }
@@ -64,7 +64,7 @@ class CustomListOperationsTest {
     fun `should return the maximum value from the given list of elements`() {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
 
-        val maxValue = ListOperations.getMaxValue(integerList)
+        val maxValue = integerList.getMaxValue()
 
         assertEquals(7, maxValue)
     }
@@ -73,7 +73,7 @@ class CustomListOperationsTest {
     fun `should return null for the max value if the list is empty`() {
         val integerList = setupIntegerList(listOf())
 
-        val maxValue = ListOperations.getMaxValue(integerList)
+        val maxValue = integerList.getMaxValue()
 
         assertEquals(null, maxValue)
     }
@@ -82,7 +82,7 @@ class CustomListOperationsTest {
     fun `should return the minimum value from the given list of elements`() {
         val integerList = setupIntegerList(listOf(4, 5, 6, 7))
 
-        val maxValue = ListOperations.getMinValue(integerList)
+        val maxValue = integerList.getMinValue()
 
         assertEquals(4, maxValue)
     }
@@ -91,7 +91,7 @@ class CustomListOperationsTest {
     fun `should return null for the min value if the list is empty`() {
         val integerList = setupIntegerList(listOf())
 
-        val maxValue = ListOperations.getMinValue(integerList)
+        val maxValue = integerList.getMinValue()
 
         assertEquals(null, maxValue)
     }
