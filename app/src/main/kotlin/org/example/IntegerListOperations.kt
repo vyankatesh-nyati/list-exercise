@@ -20,30 +20,10 @@ fun Node<Int>.getOddValues(): Node<Int> = conditionalIterationAndOperationOnElem
     condition = { value -> value % 2 != 0 },
 )
 
-fun Node<Int>.getEvenValues(): Node<Int> = conditionalIterationAndOperationOnElement(
+fun Node<Int>.getEvenValues(): Node<Int> = this.conditionalIterationAndOperationOnElement(
     integerList = this,
     condition = { value -> value % 2 == 0 },
 )
-
-//Flat map
-private fun conditionalIterationAndOperationOnElement(
-    integerList: Node<Int>,
-    condition: (Int) -> Boolean = { true },
-    operation: (Int) -> Int = { it },
-    result: Node<Int> = EmptyNode()
-): Node<Int> = when (integerList) {
-    is DataNode -> {
-        if (condition(integerList.value)) conditionalIterationAndOperationOnElement(
-            integerList.next,
-            condition,
-            operation,
-            result.addLast(operation(integerList.value))
-        )
-        else conditionalIterationAndOperationOnElement(integerList.next, condition, operation, result)
-    }
-
-    is EmptyNode -> result
-}
 
 fun Node<Int>.getSumOfElements(): Int {
     return iterateAndCalculate(this, 0) { sum, nodeValue -> sum + nodeValue }
@@ -55,14 +35,4 @@ fun DataNode<Int>.getMaxValue(): Int = iterateAndCalculate(this, Int.MIN_VALUE) 
 
 fun DataNode<Int>.getMinValue(): Int = iterateAndCalculate(this, Int.MAX_VALUE) { minValue, nodeValue ->
     min(minValue, nodeValue)
-}
-
-//Reduce
-private fun iterateAndCalculate(
-    list: Node<Int>,
-    accumulator: Int,
-    operation: (Int, Int) -> Int
-): Int = when(list) {
-    is DataNode -> iterateAndCalculate(list.next, operation(accumulator, list.value) ,operation)
-    is EmptyNode -> accumulator
 }
