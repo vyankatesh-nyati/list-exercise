@@ -1,6 +1,13 @@
 package org.example
 
 import org.example.Node.*
+import org.example.StringListOperations.Companion.convertToLowercase
+import org.example.StringListOperations.Companion.convertToUppercase
+import org.example.StringListOperations.Companion.getIntegerListWithStringLength
+import org.example.StringListOperations.Companion.getNumberOfCharacterLong
+import org.example.StringListOperations.Companion.getStringByConcatenating
+import org.example.StringListOperations.Companion.getStringByConcatenatingFirstCharacter
+import org.example.StringListOperations.Companion.getSumValueOfStringLength
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -10,7 +17,7 @@ class StringListOperationsTest {
         val stringList = EmptyNode<String>()
         val expectedList = EmptyNode<String>()
 
-        val uppercasedStringList = stringList.convertToUppercase()
+        val uppercasedStringList = convertToUppercase(stringList)
 
         assertEquals(expectedList, uppercasedStringList)
     }
@@ -20,7 +27,7 @@ class StringListOperationsTest {
         val stringList = DataNode(value = "abc", next = DataNode(value = "xYz", next = EmptyNode()))
         val expectedList = DataNode(value = "ABC", next = DataNode("XYZ", next = EmptyNode()))
 
-        val uppercasedStringList = stringList.convertToUppercase()
+        val uppercasedStringList = convertToUppercase(stringList)
 
         assertEquals(expectedList, uppercasedStringList)
     }
@@ -30,7 +37,7 @@ class StringListOperationsTest {
         val stringList = EmptyNode<String>()
         val expectedList = EmptyNode<String>()
 
-        val lowercasedStringList = stringList.convertToLowercase()
+        val lowercasedStringList = convertToLowercase(stringList)
 
         assertEquals(expectedList, lowercasedStringList)
     }
@@ -40,7 +47,7 @@ class StringListOperationsTest {
         val stringList = DataNode(value = "ABC", next = DataNode(value = "XyZ", next = EmptyNode()))
         val expectedList = DataNode(value = "abc", next = DataNode("xyz", next = EmptyNode()))
 
-        val lowercasedStringList = stringList.convertToLowercase()
+        val lowercasedStringList = convertToLowercase(stringList)
 
         assertEquals(expectedList, lowercasedStringList)
     }
@@ -50,7 +57,7 @@ class StringListOperationsTest {
         val stringList = DataNode(value = "aBCd", next = DataNode(value = "anv", next = EmptyNode()))
         val expectedList = DataNode(value = "anv", next = EmptyNode())
 
-        val resultList = stringList.getNumberOfCharacterLong(number = 3)
+        val resultList = getNumberOfCharacterLong(list = stringList, number = 3)
 
         assertEquals(expectedList, resultList)
     }
@@ -60,7 +67,7 @@ class StringListOperationsTest {
         val stringList = DataNode(value = "aBCd", next = DataNode(value = "anv", next = EmptyNode()))
         val expectedList = DataNode(value = 4, next = DataNode(value = 3, next = EmptyNode()))
 
-        val integerListWithStringLength = stringList.getIntegerListWithStringLength()
+        val integerListWithStringLength = getIntegerListWithStringLength(stringList)
 
         assertEquals(expectedList, integerListWithStringLength)
     }
@@ -69,7 +76,7 @@ class StringListOperationsTest {
     fun `should return the sum value of all the string lengths from string list`() {
         val stringList = DataNode(value = "aBCd", next = DataNode(value = "anv", next = EmptyNode()))
 
-        val sumValueOfStringLength = stringList.getSumValueOfStringLength()
+        val sumValueOfStringLength = getSumValueOfStringLength(stringList)
 
         assertEquals(7, sumValueOfStringLength)
     }
@@ -78,7 +85,7 @@ class StringListOperationsTest {
     fun `should return the single string by concatenating all values with separator`() {
         val stringList = DataNode(value = "aBCd", next = DataNode(value = "anv", next = EmptyNode()))
 
-        val stringByConcatenating = stringList.getStringByConcatenating(seperator = " ")
+        val stringByConcatenating = getStringByConcatenating(list = stringList, seperator = " ")
 
         assertEquals("aBCd anv", stringByConcatenating)
     }
@@ -88,7 +95,7 @@ class StringListOperationsTest {
         val stringList =
             DataNode(value = "abc", next = DataNode(value = "bcd", next = DataNode(value = "cde", next = EmptyNode())))
 
-        val stringByConcatenating = stringList.getStringByConcatenatingFirstCharacter()
+        val stringByConcatenating = getStringByConcatenatingFirstCharacter(stringList)
 
         assertEquals("abc", stringByConcatenating)
     }

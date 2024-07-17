@@ -1,30 +1,35 @@
 package org.example
 
-fun Node<String>.convertToUppercase(): Node<String> = this.conditionalIterationAndOperationOnElement(
-    operation = { value -> value.uppercase() }
-)
+class StringListOperations {
+    companion object {
+        fun convertToUppercase(list: Node<String>): Node<String> = list.conditionalIterationAndOperationOnElement(
+            operation = { value -> value.uppercase() }
+        )
 
-fun Node<String>.convertToLowercase(): Node<String> = this.conditionalIterationAndOperationOnElement(
-    operation = { value -> value.lowercase() }
-)
+        fun convertToLowercase(list: Node<String>): Node<String> = list.conditionalIterationAndOperationOnElement(
+            operation = { value -> value.lowercase() }
+        )
 
-fun Node<String>.getNumberOfCharacterLong(number: Int) = this.conditionalIterationAndOperationOnElement(
-    condition = { value -> value.length == number },
-    operation = { it }
-)
+        fun getNumberOfCharacterLong(list: Node<String>, number: Int) = list.conditionalIterationAndOperationOnElement(
+            condition = { value -> value.length == number },
+            operation = { it }
+        )
 
-fun Node<String>.getIntegerListWithStringLength() = this.conditionalIterationAndOperationOnElement(
-    operation = { value -> value.length }
-)
+        fun getIntegerListWithStringLength(list: Node<String>) = list.conditionalIterationAndOperationOnElement(
+            operation = { value -> value.length }
+        )
 
-fun Node<String>.getSumValueOfStringLength(): Int = this.getIntegerListWithStringLength().getSumOfElements()
+        fun getSumValueOfStringLength(list: Node<String>): Int = getIntegerListWithStringLength(list).getSumOfElements()
 
-fun Node<String>.getStringByConcatenating(seperator: String): String =
-    this.iterateAndCalculate(accumulator = "") { prevValue, nodeValue ->
-        if (prevValue != "") prevValue + seperator + nodeValue else nodeValue
+        fun getStringByConcatenating(list: Node<String>, seperator: String): String =
+            list.iterateAndCalculate(accumulator = "") { prevValue, nodeValue ->
+                if (prevValue != "") prevValue + seperator + nodeValue else nodeValue
+            }
+
+        fun getStringByConcatenatingFirstCharacter(list: Node<String>): String =
+            list.iterateAndCalculate(accumulator = "") { prev, curr ->
+                prev + curr.first()
+            }
+
     }
-
-fun Node<String>.getStringByConcatenatingFirstCharacter(): String =
-    this.iterateAndCalculate(accumulator = "") { prev, curr ->
-        prev + curr.first()
-    }
+}
