@@ -1,6 +1,6 @@
 package org.example
 
-class List<T> {
+class CustomList<T> {
     private var head: Node<T>? = null
 
     fun getHead(): Node<T>? = head

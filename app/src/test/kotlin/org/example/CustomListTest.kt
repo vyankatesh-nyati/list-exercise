@@ -4,10 +4,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class ListTest {
+class CustomListTest {
     @Test
     fun `should create the integer list with head pointing to null`() {
-        val list = List<Int>()
+        val list = CustomList<Int>()
 
         val head = list.getHead()
 
@@ -16,7 +16,7 @@ class ListTest {
 
     @Test
     fun `should able to add the integer in the list`() {
-        val list = List<Int>()
+        val list = CustomList<Int>()
 
         val addedInteger = list.addLast(4)
 
@@ -25,7 +25,7 @@ class ListTest {
 
     @Test
     fun `head should points to the newly added integer, on adding integer to empty list`() {
-        val list = List<Int>()
+        val list = CustomList<Int>()
         val expectedNode = Node(value = 4, next = null)
 
         list.addLast(4)
@@ -35,7 +35,7 @@ class ListTest {
 
     @Test
     fun `head should points to the first element of the list`() {
-        val list = List<Int>()
+        val list = CustomList<Int>()
         val expectedNode = Node(value = 4, next = Node(value = 5, next = Node(value = 6, null)))
 
         list.addLast(4)
@@ -47,7 +47,7 @@ class ListTest {
 
     @Test
     fun `should link the node to the prev node`() {
-        val list = List<Int>()
+        val list = CustomList<Int>()
         val expectedNode = Node(value = 4, next = Node(value = 5, next = null))
 
         list.addLast(4)

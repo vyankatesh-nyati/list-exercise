@@ -6,33 +6,33 @@ import kotlin.math.pow
 
 class ListOperations {
     companion object {
-        fun getSquareValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+        fun getSquareValues(list: CustomList<Int>): CustomList<Int> = conditionalIterationAndOperationOnElement(
             integerList = list,
             operation = { value -> value.toDouble().pow(2.0).toInt() }
         )
 
-        fun getCubeValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+        fun getCubeValues(list: CustomList<Int>): CustomList<Int> = conditionalIterationAndOperationOnElement(
             integerList = list,
             operation = { value -> value.toDouble().pow(3.0).toInt() }
         )
 
 
-        fun getOddValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+        fun getOddValues(list: CustomList<Int>): CustomList<Int> = conditionalIterationAndOperationOnElement(
             integerList = list,
             condition = { value -> value % 2 != 0 },
         )
 
-        fun getEvenValues(list: List<Int>): List<Int> = conditionalIterationAndOperationOnElement(
+        fun getEvenValues(list: CustomList<Int>): CustomList<Int> = conditionalIterationAndOperationOnElement(
             integerList = list,
             condition = { value -> value % 2 == 0 },
         )
 
         private fun conditionalIterationAndOperationOnElement(
-            integerList: List<Int>,
+            integerList: CustomList<Int>,
             condition: (Int) -> Boolean = { true },
             operation: (Int) -> Int = { it }
-        ): List<Int> {
-            val list = List<Int>()
+        ): CustomList<Int> {
+            val list = CustomList<Int>()
 
             var currentNode = integerList.getHead()
 
@@ -45,11 +45,11 @@ class ListOperations {
             return list
         }
 
-        fun getSumOfElements(list: List<Int>): Int {
+        fun getSumOfElements(list: CustomList<Int>): Int {
             return iterateAndCalculate(list, 0) { sum, nodeValue -> sum + nodeValue }
         }
 
-        fun getMaxValue(list: List<Int>): Int? {
+        fun getMaxValue(list: CustomList<Int>): Int? {
             if (list.getHead() == null) return null
 
             return iterateAndCalculate(list, Int.MIN_VALUE) { maxValue, nodeValue ->
@@ -57,7 +57,7 @@ class ListOperations {
             }
         }
 
-        fun getMinValue(list: List<Int>): Int? {
+        fun getMinValue(list: CustomList<Int>): Int? {
             if (list.getHead() == null) return null
 
             return iterateAndCalculate(list, Int.MAX_VALUE) { minValue, nodeValue ->
@@ -66,7 +66,7 @@ class ListOperations {
         }
 
         private fun iterateAndCalculate(
-            list: List<Int>,
+            list: CustomList<Int>,
             initialValue: Int,
             operation: (Int, Int) -> Int
         ): Int {

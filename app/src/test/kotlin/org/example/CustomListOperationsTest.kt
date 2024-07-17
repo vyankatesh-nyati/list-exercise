@@ -4,9 +4,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class ListOperationsTest {
-    private fun setupIntegerList(numbers: kotlin.collections.List<Int>): List<Int> {
-        val list = List<Int>()
+class CustomListOperationsTest {
+    private fun setupIntegerList(numbers: kotlin.collections.List<Int>): CustomList<Int> {
+        val list = CustomList<Int>()
         numbers.forEach { list.addLast(it) }
         return list
     }
@@ -15,6 +15,7 @@ class ListOperationsTest {
     fun `should return the integer list with square values for given integer list`() {
         val integerList = setupIntegerList(listOf(4, 5))
         val expectedSquareValues = setupIntegerList(listOf(16, 25))
+
         val squareValues = ListOperations.getSquareValues(integerList)
 
         assertThat(squareValues).usingRecursiveComparison().isEqualTo(expectedSquareValues)
