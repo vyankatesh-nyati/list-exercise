@@ -8,21 +8,21 @@ import kotlin.math.pow
 class IntegerListOperations {
     companion object {
         fun getSquareValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            operation = { value -> value.toDouble().pow(2.0).toInt() }
+            transform = { value -> value.toDouble().pow(2.0).toInt() }
         )
 
         fun getCubeValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            operation = { value -> value.toDouble().pow(3.0).toInt() }
+            transform = { value -> value.toDouble().pow(3.0).toInt() }
         )
 
         fun getOddValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            condition = { value -> value % 2 != 0 },
-            operation = { it }
+            predicate = { value -> value % 2 != 0 },
+            transform = { it }
         )
 
         fun getEvenValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            condition = { value -> value % 2 == 0 },
-            operation = { it }
+            predicate = { value -> value % 2 == 0 },
+            transform = { it }
         )
 
         fun getSumOfElements(list: Node<Int>): Int = list.iterateAndCalculate(0) { sum, nodeValue -> sum + nodeValue }

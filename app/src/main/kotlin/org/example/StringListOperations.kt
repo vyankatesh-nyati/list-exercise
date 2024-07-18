@@ -5,20 +5,20 @@ import org.example.IntegerListOperations.Companion.getSumOfElements
 class StringListOperations {
     companion object {
         fun convertToUppercase(list: Node<String>): Node<String> = list.conditionalIterationAndOperationOnElement(
-            operation = { value -> value.uppercase() }
+            transform = { value -> value.uppercase() }
         )
 
         fun convertToLowercase(list: Node<String>): Node<String> = list.conditionalIterationAndOperationOnElement(
-            operation = { value -> value.lowercase() }
+            transform = { value -> value.lowercase() }
         )
 
         fun getNumberOfCharacterLong(list: Node<String>, number: Int) = list.conditionalIterationAndOperationOnElement(
-            condition = { value -> value.length == number },
-            operation = { it }
+            predicate = { value -> value.length == number },
+            transform = { it }
         )
 
         fun getIntegerListWithStringLength(list: Node<String>) = list.conditionalIterationAndOperationOnElement(
-            operation = { value -> value.length }
+            transform = { value -> value.length }
         )
 
         fun getSumValueOfStringLength(list: Node<String>): Int = getSumOfElements(getIntegerListWithStringLength(list))
