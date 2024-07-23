@@ -85,4 +85,25 @@ class ListExtensionsKtTest {
 
         assertEquals(expectedList, remainingList)
     }
+
+    @Test
+    fun `should return the list with the first n elements on performing take on the list`() {
+        val integerList =
+            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+        val expectedList = DataNode(value = 4, next = DataNode(value = 5, next = EmptyNode()))
+
+        val remainingList = integerList.take(2)
+
+        assertEquals(expectedList, remainingList)
+    }
+
+    @Test
+    fun `should return whole list for the take count greater than the length of the list`() {
+        val integerList =
+            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+
+        val remainingList = integerList.take(5)
+
+        assertEquals(integerList, remainingList)
+    }
 }

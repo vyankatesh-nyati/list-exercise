@@ -33,12 +33,12 @@ fun <T> Node<T>.drop(count: Int): Node<T> =
     this.foldIndexed(EmptyNode<T>() as Node<T>) { index, acc, value -> if (index >= count) acc.addLast(value) else acc }
 
 fun <T> Node<T>.dropWhile(predicate: (T) -> Boolean): Node<T> =
-    this.foldIndexed(EmptyNode<T>() as Node<T>) { index, acc, value ->
+    this.fold(EmptyNode<T>() as Node<T>) { acc, value ->
         if (acc !is EmptyNode<T> || !predicate(value)) acc.addLast(value) else acc
     }
 
-
-fun <T> Node<T>.take(count: Int): Node<T> = TODO()
+fun <T> Node<T>.take(count: Int): Node<T> =
+    this.foldIndexed(EmptyNode<T>() as Node<T>) { index, acc, value -> if (index < count) acc.addLast(value) else acc }
 
 fun <T> Node<T>.takeWhile(predicate: (T) -> Boolean): Node<T> = TODO()
 
