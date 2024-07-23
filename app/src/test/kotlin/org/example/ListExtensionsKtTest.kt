@@ -15,6 +15,15 @@ class ListExtensionsKtTest {
     }
 
     @Test
+    fun `should accumulates value on performing operation with index for the given list`() {
+        val intList = DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+
+        val result = intList.foldIndexed(0) { index: Int, acc: Int, i: Int -> acc + i + index }
+
+        assertEquals(18, result)
+    }
+
+    @Test
     fun `should accumulates value on performing operation for the given list considering the first element as a initial value`() {
         val intList = DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
 

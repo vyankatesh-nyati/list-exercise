@@ -8,6 +8,16 @@ tailrec fun <T, R> Node<T>.fold(initial: R, operation: (acc: R, T) -> R): R = wh
     is EmptyNode -> initial
 }
 
+fun <T, R> Node<T>.foldIndexed(initial: R, operation: (index: Int, acc: R, T) -> R): R {
+    tailrec fun listFoldIndexed(list: Node<T>, index: Int, initial: R, operation: (index: Int, acc: R, T) -> R): R =
+        when (list) {
+            is DataNode -> listFoldIndexed(list.next, index + 1, operation(index, initial, list.value), operation)
+            is EmptyNode -> initial
+        }
+
+    return listFoldIndexed(this, 0, initial, operation)
+}
+
 fun <T> Node<T>.reduce(operation: (acc: T, T) -> T): T = when (this) {
     is DataNode -> this.next.fold(this.value, operation)
     is EmptyNode -> throw Exception("Reduce can't be applied on the empty list")
