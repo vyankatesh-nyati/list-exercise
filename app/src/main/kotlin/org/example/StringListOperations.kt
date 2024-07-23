@@ -24,14 +24,10 @@ class StringListOperations {
         fun getSumValueOfStringLength(list: Node<String>): Int = getSumOfElements(getIntegerListWithStringLength(list))
 
         fun getStringByConcatenating(list: Node<String>, seperator: String): String =
-            list.iterateAndCalculate(accumulator = "") { prevValue, nodeValue ->
-                if (prevValue != "") prevValue + seperator + nodeValue else nodeValue
-            }
+            list.reduce { acc, s -> acc + seperator + s }
 
         fun getStringByConcatenatingFirstCharacter(list: Node<String>): String =
-            list.iterateAndCalculate(accumulator = "") { prev, curr ->
-                prev + curr.first()
-            }
+            list.fold("") { acc, s -> acc + s.first() }
 
     }
 }

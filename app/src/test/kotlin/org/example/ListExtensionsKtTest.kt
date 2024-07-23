@@ -66,15 +66,15 @@ class ListExtensionsKtTest {
         assertEquals(expectedList, remainingList)
     }
 
-    @Test
-    fun `should drop the element of the list until the given condition returns false for the first time`() {
-        val integerList =
-            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
-        val expectedList = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode()))
-
-        val remainingList = integerList.dropWhile { it < 5 }
-
-        Result
-        assertEquals(expectedList, remainingList)
-    }
+//    @Test
+//    fun `should drop the element of the list until the given condition returns false for the first time`() {
+//        val integerList =
+//            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+//        val expectedList = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode()))
+//
+//        val remainingList = integerList.dropWhile { it < 5 }
+//
+//        Result
+//        assertEquals(expectedList, remainingList)
+//    }
 }

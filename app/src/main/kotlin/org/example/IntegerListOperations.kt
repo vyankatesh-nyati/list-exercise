@@ -25,15 +25,11 @@ class IntegerListOperations {
             transform = { it }
         )
 
-        fun getSumOfElements(list: Node<Int>): Int = list.iterateAndCalculate(0) { sum, nodeValue -> sum + nodeValue }
+        fun getSumOfElements(list: Node<Int>): Int = list.reduce { acc, i -> acc + i }
 
-        fun getMaxValue(list: DataNode<Int>): Int = list.iterateAndCalculate(Int.MIN_VALUE) { maxValue, nodeValue ->
-            max(maxValue, nodeValue)
-        }
+        fun getMaxValue(list: DataNode<Int>): Int = list.reduce { acc, i -> max(acc, i) }
 
-        fun getMinValue(list: DataNode<Int>): Int = list.iterateAndCalculate(Int.MAX_VALUE) { minValue, nodeValue ->
-            min(minValue, nodeValue)
-        }
+        fun getMinValue(list: DataNode<Int>): Int = list.reduce { acc, i -> min(acc, i) }
 
     }
 }

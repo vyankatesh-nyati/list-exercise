@@ -23,16 +23,6 @@ fun <T> Node<T>.filter(predicate: (T) -> Boolean): Node<T> = when (this) {
     is EmptyNode -> EmptyNode()
 }
 
-// reduce fold
-tailrec fun <T> Node<T>.iterateAndCalculate(
-    accumulator: T,
-    transform: (T, T) -> T
-): T = when (this) {
-    is DataNode -> this.next.iterateAndCalculate(transform(accumulator, this.value), transform)
-    is EmptyNode -> accumulator
-}
-
-
 //Flat map
 tailrec fun <T, R> Node<T>.conditionalIterationAndOperationOnElement(
     predicate: (T) -> Boolean = { true },
