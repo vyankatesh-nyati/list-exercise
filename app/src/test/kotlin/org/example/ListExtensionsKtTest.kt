@@ -53,37 +53,36 @@ class ListExtensionsKtTest {
         assertEquals(expectedList, result)
     }
 
-//    @Test
-//    fun `should return the remaining list on performing drop on the list`() {
-//        val integerList =
-//            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
-//        val expectedList = DataNode(value = 6, next = EmptyNode())
-//
-//        val remainingList = integerList.drop(2)
-//
-//        assertEquals(expectedList, remainingList)
-//    }
+    @Test
+    fun `should return the remaining list on performing drop on the list`() {
+        val integerList =
+            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+        val expectedList = DataNode(value = 6, next = EmptyNode())
 
-//    @Test
-//    fun `should return empty list for the drop count greater than the length of the list`() {
-//        val integerList =
-//            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
-//        val expectedList = EmptyNode<Int>()
-//
-//        val remainingList = integerList.drop(5)
-//
-//        assertEquals(expectedList, remainingList)
-//    }
+        val remainingList = integerList.drop(2)
 
-//    @Test
-//    fun `should drop the element of the list until the given condition returns false for the first time`() {
-//        val integerList =
-//            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
-//        val expectedList = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode()))
-//
-//        val remainingList = integerList.dropWhile { it < 5 }
-//
-//        Result
-//        assertEquals(expectedList, remainingList)
-//    }
+        assertEquals(expectedList, remainingList)
+    }
+
+    @Test
+    fun `should return empty list for the drop count greater than the length of the list`() {
+        val integerList =
+            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+        val expectedList = EmptyNode<Int>()
+
+        val remainingList = integerList.drop(5)
+
+        assertEquals(expectedList, remainingList)
+    }
+
+    @Test
+    fun `should drop the element of the list until the given condition returns false for the first time`() {
+        val integerList =
+            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+        val expectedList = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode()))
+
+        val remainingList = integerList.dropWhile { it < 5 }
+
+        assertEquals(expectedList, remainingList)
+    }
 }
