@@ -7,29 +7,18 @@ import kotlin.math.pow
 
 class IntegerListOperations {
     companion object {
-        fun getSquareValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            transform = { value -> value.toDouble().pow(2.0).toInt() }
-        )
+        fun getSquareValues(list: Node<Int>): Node<Int> = list.map { it * it }
 
-        fun getCubeValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            transform = { value -> value.toDouble().pow(3.0).toInt() }
-        )
+        fun getCubeValues(list: Node<Int>): Node<Int> = list.map { it * it * it }
 
-        fun getOddValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            predicate = { value -> value % 2 != 0 },
-            transform = { it }
-        )
+        fun getOddValues(list: Node<Int>): Node<Int> = list.filter { it % 2 == 1 }
 
-        fun getEvenValues(list: Node<Int>): Node<Int> = list.conditionalIterationAndOperationOnElement(
-            predicate = { value -> value % 2 == 0 },
-            transform = { it }
-        )
+        fun getEvenValues(list: Node<Int>): Node<Int> = list.filter { it % 2 == 0 }
 
         fun getSumOfElements(list: Node<Int>): Int = list.reduce { acc, i -> acc + i }
 
         fun getMaxValue(list: DataNode<Int>): Int = list.reduce { acc, i -> max(acc, i) }
 
         fun getMinValue(list: DataNode<Int>): Int = list.reduce { acc, i -> min(acc, i) }
-
     }
 }
