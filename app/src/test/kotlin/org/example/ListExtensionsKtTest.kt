@@ -106,4 +106,24 @@ class ListExtensionsKtTest {
 
         assertEquals(integerList, remainingList)
     }
+
+    @Test
+    fun `should return true if the given element exists in a list`() {
+        val integerList =
+            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+
+        val exists = integerList.exists { it == 5 }
+
+        assertEquals(true, exists)
+    }
+
+    @Test
+    fun `should return false if the given element doesn't exists in a list`() {
+        val integerList =
+            DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+
+        val exists = integerList.exists { it == 7 }
+
+        assertEquals(false, exists)
+    }
 }

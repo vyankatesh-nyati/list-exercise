@@ -42,6 +42,7 @@ fun <T> Node<T>.take(count: Int): Node<T> =
 
 fun <T> Node<T>.takeWhile(predicate: (T) -> Boolean): Node<T> = TODO()
 
-fun <T> Node<T>.exists(predicate: (T) -> Boolean): Boolean = TODO()
+fun <T> Node<T>.exists(predicate: (T) -> Boolean): Boolean =
+    this.fold(false) { acc, value -> if (predicate(value)) true else acc }
 
 fun <T> Node<T>.forall(predicate: (T) -> Boolean): Boolean = TODO()
