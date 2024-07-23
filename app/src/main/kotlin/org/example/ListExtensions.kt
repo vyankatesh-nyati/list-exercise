@@ -3,8 +3,28 @@ package org.example
 import org.example.Node.DataNode
 import org.example.Node.EmptyNode
 
+tailrec fun <T, R> Node<T>.fold(initial: R, operation: (acc: R, T) -> R): R = when (this) {
+    is DataNode -> this.next.fold(operation(initial, this.value), operation)
+    is EmptyNode -> initial
+}
+
+fun <T> Node<T>.reduce(operation: (acc: T, T) -> T): T = when (this) {
+    is DataNode -> this.next.fold(this.value, operation)
+    is EmptyNode -> throw Exception("Reduce can't be applied on the empty list")
+}
+
+fun <T, R> Node<T>.map(transform: (T) -> R): Node<R> = when (this) {
+    is DataNode -> this.fold(EmptyNode<R>() as Node<R>) { acc, value -> acc.addLast(transform(value)) }
+    is EmptyNode -> EmptyNode()
+}
+
+fun <T> Node<T>.filter(predicate: (T) -> Boolean): Node<T> = when (this) {
+    is DataNode -> this.fold(EmptyNode<T>() as Node<T>) { acc, value -> if (predicate(value)) acc.addLast(value) else acc }
+    is EmptyNode -> EmptyNode()
+}
+
 // reduce fold
-fun <T> Node<T>.iterateAndCalculate(
+tailrec fun <T> Node<T>.iterateAndCalculate(
     accumulator: T,
     transform: (T, T) -> T
 ): T = when (this) {
@@ -12,8 +32,9 @@ fun <T> Node<T>.iterateAndCalculate(
     is EmptyNode -> accumulator
 }
 
+
 //Flat map
-fun <T, R> Node<T>.conditionalIterationAndOperationOnElement(
+tailrec fun <T, R> Node<T>.conditionalIterationAndOperationOnElement(
     predicate: (T) -> Boolean = { true },
     transform: (T) -> R,
     result: Node<R> = EmptyNode()
@@ -65,7 +86,11 @@ fun <T> Node<T>.drop(count: Int): Node<T> = this.indexedFlatMap(
     result = EmptyNode()
 )
 
-fun <T> Node<T>.dropWhile(predicate: (T) -> Boolean): Node<T> = TODO()
+fun <T> Node<T>.dropWhile(predicate: (T) -> Boolean): Node<T> = this.conditionalIterationAndOperationOnElement(
+    predicate = predicate,
+    transform = { it },
+    result = EmptyNode()
+)
 
 fun <T> Node<T>.take(count: Int): Node<T> = TODO()
 
