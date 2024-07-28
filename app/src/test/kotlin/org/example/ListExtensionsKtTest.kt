@@ -9,7 +9,16 @@ class ListExtensionsKtTest {
     fun `should accumulates value on performing operation for the given list`() {
         val intList = DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
 
-        val result = intList.fold(0) { acc: Int, i: Int -> acc + i }
+        val result = intList.foldRight(0) { acc: Int, i: Int -> acc + i }
+
+        assertEquals(15, result)
+    }
+
+    @Test
+    fun `should accumulates value on performing operation for the given list by foldLeft`() {
+        val intList = DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
+
+        val result = intList.foldLeft(0) { acc: Int, i: Int -> acc + i }
 
         assertEquals(15, result)
     }
