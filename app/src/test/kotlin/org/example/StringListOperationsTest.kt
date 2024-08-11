@@ -14,8 +14,8 @@ import kotlin.test.assertEquals
 class StringListOperationsTest {
     @Test
     fun `should convert the list of string for empty list into list of uppercase string`() {
-        val stringList = EmptyNode<String>()
-        val expectedList = EmptyNode<String>()
+        val stringList = EmptyNode()
+        val expectedList = EmptyNode()
 
         val uppercasedStringList = convertToUppercase(stringList)
 
@@ -34,8 +34,8 @@ class StringListOperationsTest {
 
     @Test
     fun `should convert the list of string for empty list into list of lowercase string`() {
-        val stringList = EmptyNode<String>()
-        val expectedList = EmptyNode<String>()
+        val stringList = EmptyNode()
+        val expectedList = EmptyNode()
 
         val lowercasedStringList = convertToLowercase(stringList)
 

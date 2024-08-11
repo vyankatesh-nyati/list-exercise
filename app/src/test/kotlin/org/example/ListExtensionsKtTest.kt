@@ -77,7 +77,7 @@ class ListExtensionsKtTest {
     fun `should return empty list for the drop count greater than the length of the list`() {
         val integerList =
             DataNode(value = 4, next = DataNode(value = 5, next = DataNode(value = 6, next = EmptyNode())))
-        val expectedList = EmptyNode<Int>()
+        val expectedList = EmptyNode()
 
         val remainingList = integerList.drop(5)
 

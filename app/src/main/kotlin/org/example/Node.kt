@@ -1,10 +1,10 @@
 package org.example
 
-sealed class Node<T> {
+sealed class Node<in T : Any> {
 
-    data class EmptyNode<T>(val next: Nothing? = null) : Node<T>()
+    data class EmptyNode(val next: Nothing? = null) : Node<Any>()
 
-    data class DataNode<T>(val value: T, val next: Node<T>) : Node<T>()
+    data class DataNode<T : Any>(val value: T, val next: Node<T>) : Node<T>()
 
     fun addLast(i: T): Node<T> {
         return when (this) {

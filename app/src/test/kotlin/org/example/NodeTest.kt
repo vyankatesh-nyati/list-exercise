@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class NodeTest {
     @Test
     fun `should able to add the integer in the Empty list`() {
-        val list = EmptyNode<Int>()
+        val list = EmptyNode()
         val expectedList = DataNode(value = 4, next = EmptyNode())
 
         val latestList = list.addLast(4)
